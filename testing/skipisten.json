@@ -1,0 +1,30 @@
+[
+  {
+    "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "skipistenName": "Berg",
+    "skipistenSchwierigkeitsgrad": "blau",
+    "skipistenOrt": "Hombrechtikon",
+    "skipistenLaenge": 100
+  },
+  {
+    "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e7",
+    "skipistenName": "Ikenna",
+    "skipistenSchwierigkeitsgrad": "rot",
+    "skipistenOrt": "St. Moritz",
+    "skipistenLaenge": 50
+  },
+  {
+    "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e8",
+    "skipistenName": "Talabfahrt",
+    "skipistenSchwierigkeitsgrad": "schwarz",
+    "skipistenOrt": "Davos",
+    "skipistenLaenge": 200
+  },
+  {
+    "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
+    "skipistenName": "Farmer",
+    "skipistenSchwierigkeitsgrad": "rot",
+    "skipistenOrt": "Arosa",
+    "skipistenLaenge": 80
+  }
+]
