@@ -1,0 +1,77 @@
+[
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "skigebietName": "ArosaSkiGebiet",
+    "skigebietOrt": "Arosa",
+    "skigebietPLZ":  8402,
+    "skigebietOffen": true,
+    "skipisten": [
+      {
+        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+        "skipistenName": "Berg",
+        "skipistenSchwierigkeitsgrad": "blau",
+        "skipistenOrt": "Hombrechtikon",
+        "skipistenLaenge": 100
+      },
+      {
+        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e7",
+        "skipistenName": "Ikenna",
+        "skipistenSchwierigkeitsgrad": "rot",
+        "skipistenOrt": "St. Moritz",
+        "skipistenLaenge": 50
+      },
+      {
+        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e8",
+        "skipistenName": "Talabfahrt",
+        "skipistenSchwierigkeitsgrad": "schwarz",
+        "skipistenOrt": "Davos",
+        "skipistenLaenge": 200
+      },
+      {
+        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
+        "skipistenName": "Farmer",
+        "skipistenSchwierigkeitsgrad": "rot",
+        "skipistenOrt": "Arosa",
+        "skipistenLaenge": 80
+      }
+    ]
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3422e6",
+    "skigebietName": "SkiGebietDavos",
+    "skigebietOrt": "Davos",
+    "skigebietPLZ": "8723",
+    "skigebietOffen": false,
+    "skipisten": [{
+      "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+      "skipistenName": "Berg",
+      "skipistenSchwierigkeitsgrad": "blau",
+      "skipistenOrt": "Hombrechtikon",
+      "skipistenLaenge": 100
+    },
+      {
+        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+        "skipistenName": "Berg",
+        "skipistenSchwierigkeitsgrad": "blau",
+        "skipistenOrt": "Hombrechtikon",
+        "skipistenLaenge": 100
+      }
+    ]
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3423e6",
+    "skigebietName": "SkigebietBrigels",
+    "skigebietOrt": "Brigels",
+    "skigebietPLZ": 8222,
+    "skigebietOffen": true,
+    "skipisten": ""
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3424e6",
+    "skigebietName": "St.MoritzSkiGebiet",
+    "skigebietOrt": "St.Moritz",
+    "skigebietPLZ": 8677,
+    "skigebietOffen": false,
+    "skipisten": ""
+  }
+]
