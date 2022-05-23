@@ -1,4 +1,4 @@
-package service;
+package ch.bzz.skigebiete.service;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * test service
+ * test ch.bzz.skigebiete.service
  */
 @Path("test")
 public class TestService {

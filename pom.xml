@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.bzz</groupId>
-    <artifactId>Bookshelf</artifactId>
+    <artifactId>Skigebiete</artifactId>
     <version>1.0</version>
-    <name>Bookshelf</name>
+    <name>Skigebiete</name>
     <packaging>war</packaging>
 
     <properties>
@@ -34,6 +34,11 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.6</version>
         </dependency>
     </dependencies>
 
