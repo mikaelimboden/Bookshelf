@@ -1,0 +1,216 @@
+{
+	"id": "b8320159-3b6a-4d8c-bc75-9d9365ca3ecf",
+	"name": "Skigebiete",
+	"timestamp": "2022-05-24T08:41:40.186Z",
+	"collection_id": "4e7c9833-594d-43e0-ba21-712936ad42c6",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9a56b4b1-e1e4-437b-9ac8-526910380991",
+			"name": "read skipisten",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 80,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				80
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "02878d2b-f55f-4980-9f20-d23dcafd5760",
+			"name": "skipisten list all",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/list",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ec255379-7356-4560-915b-8e3e833297fb",
+			"name": "read skipisten not found",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceae4-99ef-4b41-8383-4c99ca3421e6",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "26fcc8af-1754-498d-a6e3-33d27f93500e",
+			"name": "read vermietung not found",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb6geee3-99ef-4b41-8383-4c90ca3421e6",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0861cff0-6ed6-4fe5-b525-9ddb97172a9e",
+			"name": "vermietung list all",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/list",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "915c4381-9cd2-4aba-bead-ff186b8641db",
+			"name": "read vermietung",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e26cced1-2556-4968-b8a7-4e53c5947f45",
+			"name": "skigebiet list all",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/list",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4ca0b411-f0cb-48fd-baaf-a812f14e483e",
+			"name": "read skigebiet",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a410b138-5a03-401a-a471-0a2a5a73e1a3",
+			"name": "read skigebiet not found",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421g6",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 191,
+	"collection": {
+		"requests": [
+			{
+				"id": "9a56b4b1-e1e4-437b-9ac8-526910380991",
+				"method": "GET"
+			},
+			{
+				"id": "02878d2b-f55f-4980-9f20-d23dcafd5760",
+				"method": "GET"
+			},
+			{
+				"id": "ec255379-7356-4560-915b-8e3e833297fb",
+				"method": "GET"
+			},
+			{
+				"id": "26fcc8af-1754-498d-a6e3-33d27f93500e",
+				"method": "GET"
+			},
+			{
+				"id": "0861cff0-6ed6-4fe5-b525-9ddb97172a9e",
+				"method": "GET"
+			},
+			{
+				"id": "915c4381-9cd2-4aba-bead-ff186b8641db",
+				"method": "GET"
+			},
+			{
+				"id": "e26cced1-2556-4968-b8a7-4e53c5947f45",
+				"method": "GET"
+			},
+			{
+				"id": "4ca0b411-f0cb-48fd-baaf-a812f14e483e",
+				"method": "GET"
+			},
+			{
+				"id": "a410b138-5a03-401a-a471-0a2a5a73e1a3",
+				"method": "GET"
+			}
+		]
+	}
+}
