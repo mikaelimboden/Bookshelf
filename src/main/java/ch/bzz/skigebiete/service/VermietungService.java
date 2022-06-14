@@ -21,7 +21,7 @@ public class VermietungService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listVermietung() {
-        List<Vermietung> vermietungList = DataHandler.getInstance().readAllVermietung();
+        List<Vermietung> vermietungList = DataHandler.readAllVermietung();
         return Response
                 .status(200)
                 .entity(vermietungList)
@@ -34,7 +34,7 @@ public class VermietungService {
     public Response readVermietung(
             @QueryParam("uuid") String vermietungUUID
     ) {
-        Vermietung vermietung = DataHandler.getInstance().readVermietungbyUUID(vermietungUUID);
+        Vermietung vermietung = DataHandler.readVermietungbyUUID(vermietungUUID);
         return Response
                 .status(200)
                 .entity(vermietung)

@@ -22,7 +22,7 @@ public class SkigebietService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listSkigebiet() {
-        List<Skigebiet> skigebietList = DataHandler.getInstance().readAllSkigebiet();
+        List<Skigebiet> skigebietList = DataHandler.readAllSkigebiet();
         return Response
                 .status(200)
                 .entity(skigebietList)
@@ -35,7 +35,7 @@ public class SkigebietService {
     public Response readSkigebiet(
             @QueryParam("uuid") String skigebietUUID
     ) {
-        Skigebiet skigebiet = DataHandler.getInstance().readSkigebietByUUID(skigebietUUID);
+        Skigebiet skigebiet = DataHandler.readSkigebietByUUID(skigebietUUID);
         return Response
                 .status(200)
                 .entity(skigebiet)

@@ -7,21 +7,31 @@ import ch.bzz.skigebiete.service.Config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
+public final class DataHandler {
     private static DataHandler instance = null;
-    private List<Skipisten> skipistenList;
-    private List<Skigebiet> skigebietList;
-    private List<Vermietung> vermietungList;
+    private static List<Skipisten> skipistenList;
+    private static List<Skigebiet> skigebietList;
+    private static List<Vermietung> vermietungList;
 
+    /**
+     * initialize the lists with the data
+     */
+    public static void initLists() {
+        DataHandler.setSkigebietList(null);
+        DataHandler.setSkipistenList(null);
+        DataHandler.setVermietungList(null);
+    }
     /**
      * private constructor defeats instantiation
      */
@@ -34,22 +44,12 @@ public class DataHandler {
         readVermietungJSON();
     }
 
-    /**
-     * gets the only instance of this class
-     * @return
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
-    }
-
 
     /**
      * reads all Skipisten
      * @return list of Skipisten
      */
-    public List<Skipisten> readAllSkipisten() {
+    public static List<Skipisten> readAllSkipisten() {
         return getSkipistenList();
     }
 
@@ -58,7 +58,7 @@ public class DataHandler {
      * @param skipistenUUID
      * @return the Skipiste (null=not found)
      */
-    public Skipisten readSkipistenByUUID(String skipistenUUID) {
+    public static Skipisten readSkipistenByUUID(String skipistenUUID) {
         Skipisten skipisten = null;
         for (Skipisten entry : getSkipistenList()) {
             if (entry.getSkipistenUUID().equals(skipistenUUID)) {
@@ -72,7 +72,7 @@ public class DataHandler {
      * reads all Skigebiete
      * @return list of Skigebiete
      */
-    public List<Skigebiet> readAllSkigebiet() {
+    public static List<Skigebiet> readAllSkigebiet() {
         return getSkigebietList();
     }
 
@@ -81,7 +81,7 @@ public class DataHandler {
      * @param skigebietUUID
      * @return the Skigebiet (null=not found)
      */
-    public Skigebiet readSkigebietByUUID(String skigebietUUID) {
+    public static Skigebiet readSkigebietByUUID(String skigebietUUID) {
         Skigebiet skigebiet = null;
         for (Skigebiet entry : getSkigebietList()) {
             if (entry.getSkigebietUUID().equals(skigebietUUID)) {
@@ -95,7 +95,7 @@ public class DataHandler {
      * reads all vermietungs
      * @return list of vermietungs
      */
-    public List<Vermietung> readAllVermietung() {
+    public static List<Vermietung> readAllVermietung() {
 
         return getVermietungList();
     }
@@ -105,7 +105,7 @@ public class DataHandler {
      * @param vermietungUUID
      * @return the Vermietung (null=not found)
      */
-    public Vermietung readVermietungbyUUID(String vermietungUUID) {
+    public static Vermietung readVermietungbyUUID(String vermietungUUID) {
         Vermietung vermietung = null;
         for (Vermietung entry : getVermietungList()) {
             if (entry.getVermietungUUID().equals(vermietungUUID)) {
@@ -118,7 +118,7 @@ public class DataHandler {
     /**
      * reads the Skipisten from the JSON-file
      */
-    private void readSkipistenJSON() {
+    private static void readSkipistenJSON() {
         try {
             String path = Config.getProperty("skipistenJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -137,7 +137,7 @@ public class DataHandler {
     /**
      * reads the Skigebiet from the JSON-file
      */
-    private void readSkigebietJSON() {
+    private static void readSkigebietJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -157,7 +157,7 @@ public class DataHandler {
     /**
      * reads the vermietung from the JSON-file
      */
-    private void readVermietungJSON() {
+    private static void readVermietungJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -167,7 +167,9 @@ public class DataHandler {
             ObjectMapper objectMapper = new ObjectMapper();
             Vermietung[] vermietungs = objectMapper.readValue(jsonData, Vermietung[].class);
             for (Vermietung vermietung : vermietungs) {
-                getVermietungList().add(vermietung);
+
+
+           getVermietungList().add(vermietung);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -179,7 +181,7 @@ public class DataHandler {
      *
      * @return value of skipistenList
      */
-    private List<Skipisten> getSkipistenList() {
+    private static List<Skipisten> getSkipistenList() {
         return skipistenList;
     }
 
@@ -188,7 +190,7 @@ public class DataHandler {
      *
      * @param skigebietList the value to set
      */
-    private void setSkipistenList(List<Skipisten> skigebietList) {
+    private static void setSkipistenList(List<Skipisten> skigebietList) {
         this.skipistenList = skigebietList;
     }
 
@@ -197,7 +199,7 @@ public class DataHandler {
      *
      * @return value of skigebietList
      */
-    private List<Skigebiet> getSkigebietList() {
+    private static List<Skigebiet> getSkigebietList() {
         return skigebietList;
     }
 
@@ -207,8 +209,8 @@ public class DataHandler {
      *
      * @param skigebietList the value to set
      */
-    private void setSkigebietList(List<Skigebiet> skigebietList) {
-        this.skigebietList = skigebietList;
+    private static void setSkigebietList(List<Skigebiet> skigebietList) {
+        DataHandler.skigebietList = skigebietList;
     }
 
     /**
@@ -216,7 +218,7 @@ public class DataHandler {
      *
      * @return value of vermietungList
      */
-    private List<Vermietung> getVermietungList() {
+    private static List<Vermietung> getVermietungList() {
         return vermietungList;
     }
 
@@ -225,9 +227,136 @@ public class DataHandler {
      *
      * @param vermietungList the value to set
      */
-    private void setVermietungList(List<Vermietung> vermietungList) {
-        this.vermietungList = vermietungList;
+    private static void setVermietungList(List<Vermietung> vermietungList) {
+        DataHandler.vermietungList = vermietungList;
+    }
+
+    /**
+     * inserts a new skigebiet into the skigebietList
+     *
+     * @param skigebiet the skigebiet to be saved
+     */
+    public static void insertSkigebiet(Skigebiet skigebiet) {
+        getSkigebietList().add(skigebiet);
+        writeSkigebietJSON();
+    }
+    /**
+     * updates the skigebietList
+     */
+    public static void updateSkigebiet() {
+        writeSkigebietJSON();
+    }
+    /**
+     * deletes a skigebiet identified by the skigebiet
+     * UUID
+     * @param skigebietUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteSkigebiet(String skigebietUUID) {
+        Skigebiet skigebiet = readSkigebietByUUID(skigebietUUID);
+        if (skigebiet != null) {
+            getSkigebietList().remove(skigebiet);
+            writeSkigebietJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * inserts a new skigebiet into the skigebietList
+     *
+     * @param skigebiet the skigebiet to be saved
+     */
+    public static void insertSkigebiet(Skigebiet skigebiet) {
+        getSkigebietList().add(skigebiet);
+        writeSkigebietJSON();
+    }
+    /**
+     * updates the skigebietList
+     */
+    public static void updateSkigebiet() {
+        writeSkigebietJSON();
+    }
+    /**
+     * deletes a skigebiet identified by the skigebiet
+     * UUID
+     * @param skigebietUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteSkigebiet(String skigebietUUID) {
+        Skigebiet skigebiet = readSkigebietByUUID(skigebietUUID);
+        if (skigebiet != null) {
+            getSkigebietList().remove(skigebiet);
+            writeSkigebietJSON();
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
+    /**
+     * inserts a new skipiste into the skigpistenList
+     *
+     * @param skipisten the skipiste to be saved
+     */
+    public static void insertSkipisten(Skipisten skipisten) {
+        getSkipistenList().add(skipisten);
+        writeSkipistenJSON();
+    }
+    /**
+     * updates the skipistenList
+     */
+    public static void updateSkipisten() {
+        writeSkipistenJSON();
+    }
+    /**
+     * deletes a skipiste identified by the skipisten
+     * UUID
+     * @param skipistenUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteSkipisten(String skipistenUUID) {
+        Skipisten skipisten = readSkipistenByUUID(skipistenUUID);
+        if (skipisten != null) {
+            getSkipistenList().remove(skipisten);
+            writeSkipistenJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * inserts a new vermietung into the vermietungList
+     *
+     * @param vermietung the vermietung to be saved
+     */
+    public static void insertVermietung(Vermietung vermietung) {
+        getVermietungList().add(vermietung);
+        writeVermietungJSON();
+    }
+    /**
+     * updates the vermietungList
+     */
+    public static void updateVermietung() {
+        writeVermietungJSON();
+    }
+    /**
+     * deletes a vermietung identified by the vermietung
+     * UUID
+     * @param vermietungUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteVermietung(String vermietungUUID) {
+        Vermietung vermietung = readVermietungbyUUID(vermietungUUID);
+        if (vermietung != null) {
+            getSkigebietList().remove(vermietung);
+            writeVermietungJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

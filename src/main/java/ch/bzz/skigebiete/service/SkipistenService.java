@@ -22,7 +22,7 @@ public class SkipistenService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listSkipisten() {
-        List<Skipisten> skipistenList = DataHandler.getInstance().readAllSkipisten();
+        List<Skipisten> skipistenList = DataHandler.readAllSkipisten();
         return Response
                 .status(200)
                 .entity(skipistenList)
@@ -35,7 +35,7 @@ public class SkipistenService {
     public Response readSkipisten(
             @QueryParam("uuid") String skipistenUUID
     ) {
-        Skipisten skipisten = DataHandler.getInstance().readSkipistenByUUID(skipistenUUID);
+        Skipisten skipisten = DataHandler.readSkipistenByUUID(skipistenUUID);
         return Response
                 .status(200)
                 .entity(skipisten)
