@@ -5,10 +5,13 @@ import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Vermietung;
 import ch.bzz.skigebiete.service.Config;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import javax.xml.crypto.Data;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ public final class DataHandler {
         DataHandler.setSkipistenList(null);
         DataHandler.setVermietungList(null);
     }
+
     /**
      * private constructor defeats instantiation
      */
@@ -47,6 +51,7 @@ public final class DataHandler {
 
     /**
      * reads all Skipisten
+     *
      * @return list of Skipisten
      */
     public static List<Skipisten> readAllSkipisten() {
@@ -55,6 +60,7 @@ public final class DataHandler {
 
     /**
      * reads a skipiste by its uuid
+     *
      * @param skipistenUUID
      * @return the Skipiste (null=not found)
      */
@@ -70,6 +76,7 @@ public final class DataHandler {
 
     /**
      * reads all Skigebiete
+     *
      * @return list of Skigebiete
      */
     public static List<Skigebiet> readAllSkigebiet() {
@@ -78,6 +85,7 @@ public final class DataHandler {
 
     /**
      * reads an skigebiet by its uuid
+     *
      * @param skigebietUUID
      * @return the Skigebiet (null=not found)
      */
@@ -93,6 +101,7 @@ public final class DataHandler {
 
     /**
      * reads all vermietungs
+     *
      * @return list of vermietungs
      */
     public static List<Vermietung> readAllVermietung() {
@@ -102,6 +111,7 @@ public final class DataHandler {
 
     /**
      * reads a vermietung by its uuid
+     *
      * @param vermietungUUID
      * @return the Vermietung (null=not found)
      */
@@ -169,7 +179,7 @@ public final class DataHandler {
             for (Vermietung vermietung : vermietungs) {
 
 
-           getVermietungList().add(vermietung);
+                getVermietungList().add(vermietung);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -191,7 +201,7 @@ public final class DataHandler {
      * @param skigebietList the value to set
      */
     private static void setSkipistenList(List<Skipisten> skigebietList) {
-        this.skipistenList = skigebietList;
+        DataHandler.skipistenList = skigebietList;
     }
 
     /**
@@ -240,49 +250,20 @@ public final class DataHandler {
         getSkigebietList().add(skigebiet);
         writeSkigebietJSON();
     }
+
     /**
      * updates the skigebietList
      */
     public static void updateSkigebiet() {
         writeSkigebietJSON();
     }
+
     /**
      * deletes a skigebiet identified by the skigebiet
      * UUID
-     * @param skigebietUUID  the key
-     * @return  success=true/false
-     */
-    public static boolean deleteSkigebiet(String skigebietUUID) {
-        Skigebiet skigebiet = readSkigebietByUUID(skigebietUUID);
-        if (skigebiet != null) {
-            getSkigebietList().remove(skigebiet);
-            writeSkigebietJSON();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * inserts a new skigebiet into the skigebietList
      *
-     * @param skigebiet the skigebiet to be saved
-     */
-    public static void insertSkigebiet(Skigebiet skigebiet) {
-        getSkigebietList().add(skigebiet);
-        writeSkigebietJSON();
-    }
-    /**
-     * updates the skigebietList
-     */
-    public static void updateSkigebiet() {
-        writeSkigebietJSON();
-    }
-    /**
-     * deletes a skigebiet identified by the skigebiet
-     * UUID
-     * @param skigebietUUID  the key
-     * @return  success=true/false
+     * @param skigebietUUID the key
+     * @return success=true/false
      */
     public static boolean deleteSkigebiet(String skigebietUUID) {
         Skigebiet skigebiet = readSkigebietByUUID(skigebietUUID);
@@ -294,7 +275,6 @@ public final class DataHandler {
             return false;
         }
     }
-
 
     /**
      * inserts a new skipiste into the skigpistenList
@@ -305,17 +285,20 @@ public final class DataHandler {
         getSkipistenList().add(skipisten);
         writeSkipistenJSON();
     }
+
     /**
      * updates the skipistenList
      */
     public static void updateSkipisten() {
         writeSkipistenJSON();
     }
+
     /**
      * deletes a skipiste identified by the skipisten
      * UUID
-     * @param skipistenUUID  the key
-     * @return  success=true/false
+     *
+     * @param skipistenUUID the key
+     * @return success=true/false
      */
     public static boolean deleteSkipisten(String skipistenUUID) {
         Skipisten skipisten = readSkipistenByUUID(skipistenUUID);
@@ -337,17 +320,20 @@ public final class DataHandler {
         getVermietungList().add(vermietung);
         writeVermietungJSON();
     }
+
     /**
      * updates the vermietungList
      */
     public static void updateVermietung() {
         writeVermietungJSON();
     }
+
     /**
      * deletes a vermietung identified by the vermietung
      * UUID
-     * @param vermietungUUID  the key
-     * @return  success=true/false
+     *
+     * @param vermietungUUID the key
+     * @return success=true/false
      */
     public static boolean deleteVermietung(String vermietungUUID) {
         Vermietung vermietung = readVermietungbyUUID(vermietungUUID);
@@ -359,4 +345,61 @@ public final class DataHandler {
             return false;
         }
     }
+
+    /**
+     * writes the skigebietList to the JSON-file
+     */
+    private static void writeSkigebietJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String skigebietPath = Config.getProperty("skigebietJSON");
+        try {
+            fileOutputStream = new FileOutputStream(skigebietPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getSkigebietList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * writes the skipistenList to the JSON-file
+     */
+    private static void writeSkipistenJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String skipistenPath = Config.getProperty("skipistenJSON");
+        try {
+            fileOutputStream = new FileOutputStream(skipistenPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getSkipistenList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    /**
+     * writes the skigebietList to the JSON-file
+     */
+    private static void writeVermietungJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String vermietungPath = Config.getProperty("vermietungJSON");
+        try {
+            fileOutputStream = new FileOutputStream(vermietungPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getVermietungList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

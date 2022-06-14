@@ -4,13 +4,11 @@ import ch.bzz.skigebiete.data.DataHandler;
 import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Skigebiet;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * services for reading skigebiete
@@ -39,6 +37,37 @@ public class SkigebietService {
         return Response
                 .status(200)
                 .entity(skigebiet)
+                .build();
+    }
+
+    /**
+     * inserts a new song
+     * @param skigebietName
+     * @param skigebietOrt
+     * @param skigebietPLZ
+     * @param skigebietOffen;
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertSong(
+            @FormParam("skigebietName") String skigebietName,
+            @FormParam("skigebietOrt") String skigebietOrt,
+            @FormParam("skigebietPLZ") int skigebietPLZ,
+            @FormParam("skigebietOffen") boolean skigebietOffen
+    ) {
+        Skigebiet skigebiet = new Skigebiet();
+        skigebiet.setSkigebietUUID(UUID.randomUUID().toString());
+        skigebiet.setSkigebietName(skigebietName);
+        skigebiet.setSkigebietOrt(skigebietOrt);
+        skigebiet.setSkigebietPLZ(skigebietPLZ);
+        skigebiet.setSkigebietOffen(skigebietOffen);
+
+        DataHandler.insertSkigebiet(skigebiet);
+        return Response
+                .status(200)
+                .entity("")
                 .build();
     }
 

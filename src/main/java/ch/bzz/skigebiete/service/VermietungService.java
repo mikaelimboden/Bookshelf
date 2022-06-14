@@ -3,13 +3,11 @@ package ch.bzz.skigebiete.service;
 import ch.bzz.skigebiete.data.DataHandler;
 import ch.bzz.skigebiete.model.Vermietung;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * services for reading vermietung
@@ -41,5 +39,40 @@ public class VermietungService {
                 .build();
     }
 
+    /**
+     * inserts a new song
+     * @param vermietungName
+     * @param vermietungOrt
+     * @param vermietungPLZ
+     * @param vermietungOffen
+     * @param artikelName
+     * @param artikelNummer
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertSong(
+            @FormParam("vermietungName") String vermietungName,
+            @FormParam("vermietungOrt") String vermietungOrt,
+            @FormParam("vermietungPLZ") String vermietungPLZ,
+            @FormParam("vermietungOffen") boolean vermietungOffen,
+            @FormParam("artikelName") String artikelName,
+            @FormParam("artikelNummer") int artikelNummer
+    ) {
+        Vermietung vermietung = new Vermietung();
+        vermietung.setVermietungName(UUID.randomUUID().toString());
+        vermietung.setVermietungOrt(vermietungOrt);
+        vermietung.setVermietungPLZ(vermietungPLZ);
+        vermietung.setVermietungOffen(vermietungOffen);
+        vermietung.setArtikelName(artikelName);
+        vermietung.setArtikelNummer(artikelNummer);
+
+        DataHandler.insertVermietung(vermietung);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
 }
 

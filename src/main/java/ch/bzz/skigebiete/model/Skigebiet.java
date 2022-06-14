@@ -8,7 +8,7 @@ import java.util.List;
 public class Skigebiet {
     private String skigebietUUID;
     private String skigebietName;
-    private String SkigebietOrt;
+    private String skigebietOrt;
     private int skigebietPLZ;
     private boolean skigebietOffen;
     private List<Skipisten> skipisten;
@@ -23,11 +23,11 @@ public class Skigebiet {
     }
 
     public String getSkigebietOrt() {
-        return SkigebietOrt;
+        return skigebietOrt;
     }
 
     public void setSkigebietOrt(String skigebietOrt) {
-        SkigebietOrt = skigebietOrt;
+        skigebietOrt = skigebietOrt;
     }
 
     public int getSkigebietPLZ() {
