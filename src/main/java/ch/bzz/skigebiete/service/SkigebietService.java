@@ -73,7 +73,7 @@ public class SkigebietService {
     }
 
     /**
-     * updates a Vermietung
+     * updates a Skigebiet
      * @param skigebietUUID
      * @param skigebietName
      * @param skigebietOrt
@@ -84,7 +84,7 @@ public class SkigebietService {
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateVermietung(
+    public Response updateSkigebiet(
             @FormParam("skigebietUUID") String skigebietUUID,
             @FormParam("skigebietName") String skigebietName,
             @FormParam("skigebietOrt") String skigebietOrt,
@@ -99,7 +99,7 @@ public class SkigebietService {
             skigebiet.setSkigebietOrt(skigebietOrt);
             skigebiet.setSkigebietPLZ(skigebietPLZ);
             skigebiet.setSkigebietOffen(skigebietOffen);
-            DataHandler.updateSkipisten();
+            DataHandler.updateSkigebiet();
         } else {
             httpStatus = 410;
         }
@@ -122,7 +122,7 @@ public class SkigebietService {
             @QueryParam("uuid") String skigebietUUID
     ) {
         int httpStatus = 200;
-        if (!DataHandler.deleteVermietung(skigebietUUID)) {
+        if (!DataHandler.deleteSkigebiet(skigebietUUID)) {
             httpStatus = 410;
         }
         return Response
