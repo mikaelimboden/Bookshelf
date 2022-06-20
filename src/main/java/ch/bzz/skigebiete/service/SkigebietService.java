@@ -3,6 +3,7 @@ package ch.bzz.skigebiete.service;
 import ch.bzz.skigebiete.data.DataHandler;
 import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Skigebiet;
+import ch.bzz.skigebiete.model.Skipisten;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -67,6 +68,44 @@ public class SkigebietService {
         DataHandler.insertSkigebiet(skigebiet);
         return Response
                 .status(200)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * updates a Vermietung
+     * @param skigebietUUID
+     * @param skigebietName
+     * @param skigebietOrt
+     * @param skigebietPLZ
+     * @param skigebietOffen
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateVermietung(
+            @FormParam("skigebietUUID") String skigebietUUID,
+            @FormParam("skigebietName") String skigebietName,
+            @FormParam("skigebietOrt") String skigebietOrt,
+            @FormParam("skigebietPLZ") int skigebietPLZ,
+            @FormParam("skigebietOffen") boolean skigebietOffen
+    ) {
+        int httpStatus = 200;
+        Skigebiet skigebiet = DataHandler.readSkigebietByUUID(skigebietUUID);
+        if (skigebiet != null) {
+            skigebiet.setSkigebietUUID(skigebietUUID);
+            skigebiet.setSkigebietName(skigebietName);
+            skigebiet.setSkigebietOrt(skigebietOrt);
+            skigebiet.setSkigebietPLZ(skigebietPLZ);
+            skigebiet.setSkigebietOffen(skigebietOffen);
+            DataHandler.updateSkipisten();
+        } else {
+            httpStatus = 410;
+        }
+
+        return Response
+                .status(httpStatus)
                 .entity("")
                 .build();
     }

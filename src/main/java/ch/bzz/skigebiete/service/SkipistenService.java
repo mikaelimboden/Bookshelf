@@ -3,6 +3,7 @@ package ch.bzz.skigebiete.service;
 import ch.bzz.skigebiete.data.DataHandler;
 import ch.bzz.skigebiete.model.Skipisten;
 import ch.bzz.skigebiete.model.Skigebiet;
+import ch.bzz.skigebiete.model.Vermietung;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -69,4 +70,44 @@ public class SkipistenService {
                 .entity("")
                 .build();
     }
+
+
+    /**
+     * updates a Vermietung
+     * @param skipistenUUID
+     * @param skipistenName
+     * @param skipistenSchwierigkeitsgrad
+     * @param skipistenOrt
+     * @param skipistenLaenge
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateVermietung(
+            @FormParam("skipistenUUID") String skipistenUUID,
+            @FormParam("skipistenName") String skipistenName,
+            @FormParam("skipistenSchwierigkeitsgrad") String skipistenSchwierigkeitsgrad,
+            @FormParam("skipistenOrt") String skipistenOrt,
+            @FormParam("skipistenLaenge") int skipistenLaenge
+    ) {
+        int httpStatus = 200;
+        Skipisten skipisten = DataHandler.readSkipistenByUUID(skipistenUUID);
+        if (skipisten != null) {
+            skipisten.setSkipistenUUID(skipistenUUID);
+            skipisten.setSkipistenName(skipistenName);
+            skipisten.setSkipistenSchwierigkeitsgrad(skipistenSchwierigkeitsgrad);
+            skipisten.setSkipistenOrt(skipistenOrt);
+            skipisten.setSkipistenLaenge(skipistenLaenge);
+            DataHandler.updateSkipisten();
+        } else {
+            httpStatus = 410;
+        }
+
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
 }
