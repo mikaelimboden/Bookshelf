@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * services for reading vermietung
+ * services für vermietung
  */
 @Path("vermietung")
 public class VermietungService {
@@ -40,7 +40,7 @@ public class VermietungService {
     }
 
     /**
-     * inserts a new vermietung
+     * einfügen von neuer vermietung
      * @param vermietungName
      * @param vermietungOrt
      * @param vermietungPLZ
@@ -78,7 +78,7 @@ public class VermietungService {
 
 
     /**
-     * updates a Vermietung
+     * updates eine Vermietung
      * @param vermietungUUID
      * @param vermietungName
      * @param vermietungOrt
@@ -122,7 +122,7 @@ public class VermietungService {
     }
 
     /**
-     * deletes a vermietung identified by its uuid
+     * löscht eine vermietung identifiziert bei iher uuid
      * @param vermietungUUID  the key
      * @return  Response
      */

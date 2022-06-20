@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * services for reading skigepisten
+ * services für skigepisten
  */
 @Path("skipisten")
 public class SkipistenService {
@@ -42,7 +42,7 @@ public class SkipistenService {
     }
 
     /**
-     * inserts a new skipiste
+     * einfügen von neuer skipiste
      * @param skipistenName
      * @param skipistenSchwierigkeitsgrad
      * @param skipistenOrt
@@ -73,7 +73,7 @@ public class SkipistenService {
 
 
     /**
-     * updates a Vermietung
+     * updates eine Vermietung
      * @param skipistenUUID
      * @param skipistenName
      * @param skipistenSchwierigkeitsgrad
@@ -111,7 +111,7 @@ public class SkipistenService {
     }
 
     /**
-     * deletes a skipisten identified by its uuid
+     * löscht eine skipisten identifiziert bei ihrer uuid
      * @param skipistenUUID  the key
      * @return  Response
      */

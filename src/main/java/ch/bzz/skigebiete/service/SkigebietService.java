@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * services for reading skigebiete
+ * services für skigebiete
  */
 @Path("skigebiet")
 public class SkigebietService {
@@ -42,7 +42,7 @@ public class SkigebietService {
     }
 
     /**
-     * inserts a new skigebiet
+     * einfügen von neuer skigebiet
      * @param skigebietName
      * @param skigebietOrt
      * @param skigebietPLZ
@@ -73,7 +73,7 @@ public class SkigebietService {
     }
 
     /**
-     * updates a Skigebiet
+     * updates ein Skigebiet
      * @param skigebietUUID
      * @param skigebietName
      * @param skigebietOrt
@@ -111,7 +111,7 @@ public class SkigebietService {
     }
 
     /**
-     * deletes a skigebiet identified by its uuid
+     * löscht ein skigebiet identifiziert bei ihrer uuid
      * @param skigebietUUID  the key
      * @return  Response
      */
