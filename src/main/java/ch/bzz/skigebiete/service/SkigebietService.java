@@ -42,17 +42,17 @@ public class SkigebietService {
     }
 
     /**
-     * inserts a new song
+     * inserts a new skigebiet
      * @param skigebietName
      * @param skigebietOrt
      * @param skigebietPLZ
-     * @param skigebietOffen;
+     * @param skigebietOffen
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response insertSong(
+    public Response insertSkigebiet(
             @FormParam("skigebietName") String skigebietName,
             @FormParam("skigebietOrt") String skigebietOrt,
             @FormParam("skigebietPLZ") int skigebietPLZ,
@@ -104,6 +104,27 @@ public class SkigebietService {
             httpStatus = 410;
         }
 
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * deletes a skigebiet identified by its uuid
+     * @param skigebietUUID  the key
+     * @return  Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteSkigebiet(
+            @QueryParam("uuid") String skigebietUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteVermietung(skigebietUUID)) {
+            httpStatus = 410;
+        }
         return Response
                 .status(httpStatus)
                 .entity("")

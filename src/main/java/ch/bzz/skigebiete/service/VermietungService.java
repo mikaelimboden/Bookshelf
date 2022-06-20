@@ -40,7 +40,7 @@ public class VermietungService {
     }
 
     /**
-     * inserts a new song
+     * inserts a new vermietung
      * @param vermietungName
      * @param vermietungOrt
      * @param vermietungPLZ
@@ -52,7 +52,7 @@ public class VermietungService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response insertSong(
+    public Response insertVermietung(
             @FormParam("vermietungName") String vermietungName,
             @FormParam("vermietungOrt") String vermietungOrt,
             @FormParam("vermietungPLZ") String vermietungPLZ,
@@ -121,7 +121,26 @@ public class VermietungService {
                 .build();
     }
 
-
+    /**
+     * deletes a vermietung identified by its uuid
+     * @param vermietungUUID  the key
+     * @return  Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteVermietung(
+            @QueryParam("uuid") String vermietungUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteVermietung(vermietungUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
 
 
 

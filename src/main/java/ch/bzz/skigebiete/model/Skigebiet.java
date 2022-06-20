@@ -27,7 +27,7 @@ public class Skigebiet {
     }
 
     public void setSkigebietOrt(String skigebietOrt) {
-        skigebietOrt = skigebietOrt;
+        this.skigebietOrt = skigebietOrt;
     }
 
     public int getSkigebietPLZ() {

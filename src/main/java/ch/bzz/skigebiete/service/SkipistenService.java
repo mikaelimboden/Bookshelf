@@ -52,7 +52,7 @@ public class SkipistenService {
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response insertSong(
+    public Response insertSkipisten(
             @FormParam("skipistenName") String skipistenName,
             @FormParam("skipistenSchwierigkeitsgrad") String skipistenSchwierigkeitsgrad,
             @FormParam("skipistenOrt") String skipistenOrt,
@@ -104,6 +104,27 @@ public class SkipistenService {
             httpStatus = 410;
         }
 
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * deletes a skipisten identified by its uuid
+     * @param skipistenUUID  the key
+     * @return  Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteSkipisten(
+            @QueryParam("uuid") String skipistenUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteSkipisten(skipistenUUID)) {
+            httpStatus = 410;
+        }
         return Response
                 .status(httpStatus)
                 .entity("")
