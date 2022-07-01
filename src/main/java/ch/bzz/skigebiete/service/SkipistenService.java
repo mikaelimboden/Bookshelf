@@ -5,6 +5,9 @@ import ch.bzz.skigebiete.model.Skipisten;
 import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Vermietung;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,6 +35,8 @@ public class SkipistenService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readSkipisten(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String skipistenUUID
     ) {
         Skipisten skipisten = DataHandler.readSkipistenByUUID(skipistenUUID);
@@ -43,27 +48,20 @@ public class SkipistenService {
 
     /**
      * einfügen von neuer skipiste
-     * @param skipistenName
-     * @param skipistenSchwierigkeitsgrad
-     * @param skipistenOrt
-     * @param skipistenLaenge
+     * skipistenName
+     * skipistenSchwierigkeitsgrad
+     * skipistenOrt
+     * skipistenLaenge
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSkipisten(
-            @FormParam("skipistenName") String skipistenName,
-            @FormParam("skipistenSchwierigkeitsgrad") String skipistenSchwierigkeitsgrad,
-            @FormParam("skipistenOrt") String skipistenOrt,
-            @FormParam("skipistenLaenge") int skipistenLaenge
+            @Valid @BeanParam Skipisten skipisten
     ) {
-        Skipisten skipisten = new Skipisten();
-        skipisten.setSkipistenName(UUID.randomUUID().toString());
-        skipisten.setSkipistenSchwierigkeitsgrad(skipistenSchwierigkeitsgrad);
-        skipisten.setSkipistenOrt(skipistenOrt);
-        skipisten.setSkipistenLaenge(skipistenLaenge);
 
+        skipisten.setSkipistenName(UUID.randomUUID().toString());
         DataHandler.insertSkipisten(skipisten);
         return Response
                 .status(200)
@@ -74,31 +72,27 @@ public class SkipistenService {
 
     /**
      * updates eine Vermietung
-     * @param skipistenUUID
-     * @param skipistenName
-     * @param skipistenSchwierigkeitsgrad
-     * @param skipistenOrt
-     * @param skipistenLaenge
+     * skipistenUUID
+     * skipistenName
+     * skipistenSchwierigkeitsgrad
+     * skipistenOrt
+     * skipistenLaenge
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateVermietung(
-            @FormParam("skipistenUUID") String skipistenUUID,
-            @FormParam("skipistenName") String skipistenName,
-            @FormParam("skipistenSchwierigkeitsgrad") String skipistenSchwierigkeitsgrad,
-            @FormParam("skipistenOrt") String skipistenOrt,
-            @FormParam("skipistenLaenge") int skipistenLaenge
+            @Valid @BeanParam Skipisten skipisten
     ) {
         int httpStatus = 200;
-        Skipisten skipisten = DataHandler.readSkipistenByUUID(skipistenUUID);
+        Skipisten oldskipisten = DataHandler.readSkipistenByUUID(skipisten.getSkipistenUUID());
         if (skipisten != null) {
-            skipisten.setSkipistenUUID(skipistenUUID);
-            skipisten.setSkipistenName(skipistenName);
-            skipisten.setSkipistenSchwierigkeitsgrad(skipistenSchwierigkeitsgrad);
-            skipisten.setSkipistenOrt(skipistenOrt);
-            skipisten.setSkipistenLaenge(skipistenLaenge);
+            oldskipisten.setSkipistenUUID(skipisten.getSkipistenUUID());
+            oldskipisten.setSkipistenName(skipisten.getSkipistenName());
+            oldskipisten.setSkipistenSchwierigkeitsgrad(skipisten.getSkipistenSchwierigkeitsgrad());
+            oldskipisten.setSkipistenOrt(skipisten.getSkipistenOrt());
+            oldskipisten.setSkipistenLaenge(skipisten.getSkipistenLaenge());
             DataHandler.updateSkipisten();
         } else {
             httpStatus = 410;
@@ -119,6 +113,8 @@ public class SkipistenService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteSkipisten(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String skipistenUUID
     ) {
         int httpStatus = 200;

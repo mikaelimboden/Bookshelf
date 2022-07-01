@@ -192,6 +192,10 @@ public final class DataHandler {
      * @return value of skipistenList
      */
     private static List<Skipisten> getSkipistenList() {
+        if (skipistenList == null) {
+            setSkipistenList(new ArrayList<>());
+            readSkipistenJSON();
+        }
         return skipistenList;
     }
 
@@ -210,6 +214,10 @@ public final class DataHandler {
      * @return value of skigebietList
      */
     private static List<Skigebiet> getSkigebietList() {
+        if (skigebietList == null) {
+            setSkigebietList(new ArrayList<>());
+            readSkigebietJSON();
+        }
         return skigebietList;
     }
 
@@ -229,6 +237,11 @@ public final class DataHandler {
      * @return value of vermietungList
      */
     private static List<Vermietung> getVermietungList() {
+
+        if (vermietungList == null) {
+            setVermietungList(new ArrayList<>());
+            readVermietungJSON();
+        }
         return vermietungList;
     }
 

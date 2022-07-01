@@ -4,7 +4,11 @@ import ch.bzz.skigebiete.data.DataHandler;
 import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Skipisten;
+import ch.bzz.skigebiete.model.Vermietung;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,6 +36,8 @@ public class SkigebietService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readSkigebiet(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String skigebietUUID
     ) {
         Skigebiet skigebiet = DataHandler.readSkigebietByUUID(skigebietUUID);
@@ -43,28 +49,20 @@ public class SkigebietService {
 
     /**
      * einfügen von neuer skigebiet
-     * @param skigebietName
-     * @param skigebietOrt
-     * @param skigebietPLZ
-     * @param skigebietOffen
+     * skigebietName
+     * skigebietOrt
+     * skigebietPLZ
+     * skigebietOffen
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSkigebiet(
-            @FormParam("skigebietName") String skigebietName,
-            @FormParam("skigebietOrt") String skigebietOrt,
-            @FormParam("skigebietPLZ") int skigebietPLZ,
-            @FormParam("skigebietOffen") boolean skigebietOffen
+            @Valid @BeanParam Skigebiet skigebiet
     ) {
-        Skigebiet skigebiet = new Skigebiet();
-        skigebiet.setSkigebietUUID(UUID.randomUUID().toString());
-        skigebiet.setSkigebietName(skigebietName);
-        skigebiet.setSkigebietOrt(skigebietOrt);
-        skigebiet.setSkigebietPLZ(skigebietPLZ);
-        skigebiet.setSkigebietOffen(skigebietOffen);
 
+        skigebiet.setSkigebietUUID(UUID.randomUUID().toString());
         DataHandler.insertSkigebiet(skigebiet);
         return Response
                 .status(200)
@@ -74,31 +72,26 @@ public class SkigebietService {
 
     /**
      * updates ein Skigebiet
-     * @param skigebietUUID
-     * @param skigebietName
-     * @param skigebietOrt
-     * @param skigebietPLZ
-     * @param skigebietOffen
+     * skigebietUUID
+     * skigebietName
+     * skigebietOrt
+     * skigebietPLZ
+     * skigebietOffen
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateSkigebiet(
-            @FormParam("skigebietUUID") String skigebietUUID,
-            @FormParam("skigebietName") String skigebietName,
-            @FormParam("skigebietOrt") String skigebietOrt,
-            @FormParam("skigebietPLZ") int skigebietPLZ,
-            @FormParam("skigebietOffen") boolean skigebietOffen
+            @Valid @BeanParam Skigebiet skigebiet
     ) {
         int httpStatus = 200;
-        Skigebiet skigebiet = DataHandler.readSkigebietByUUID(skigebietUUID);
+        Skigebiet oldskigebiet = DataHandler.readSkigebietByUUID(skigebiet.getSkigebietUUID());
         if (skigebiet != null) {
-            skigebiet.setSkigebietUUID(skigebietUUID);
-            skigebiet.setSkigebietName(skigebietName);
-            skigebiet.setSkigebietOrt(skigebietOrt);
-            skigebiet.setSkigebietPLZ(skigebietPLZ);
-            skigebiet.setSkigebietOffen(skigebietOffen);
+            oldskigebiet.setSkigebietName(skigebiet.getSkigebietName());
+            oldskigebiet.setSkigebietOrt(skigebiet.getSkigebietOrt());
+            oldskigebiet.setSkigebietPLZ(skigebiet.getSkigebietPLZ());
+            oldskigebiet.setSkigebietOffen(skigebiet.isSkigebietOffen());
             DataHandler.updateSkigebiet();
         } else {
             httpStatus = 410;
@@ -119,6 +112,8 @@ public class SkigebietService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteSkigebiet(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String skigebietUUID
     ) {
         int httpStatus = 200;
