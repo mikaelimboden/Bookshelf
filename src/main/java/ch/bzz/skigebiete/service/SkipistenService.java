@@ -23,7 +23,17 @@ public class SkipistenService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listSkipisten() {
+    public Response listSkipisten(
+                    @CookieParam("userRole") String userRole) {
+        {
+            List<Skigebiet> genre = null;
+            int httpStatus;
+            if (userRole == null || userRole.equals("guest")) {
+                httpStatus = 403;
+            } else {
+                httpStatus = 200;
+            }
+        }
         List<Skipisten> skipistenList = DataHandler.readAllSkipisten();
         return Response
                 .status(200)
@@ -111,7 +121,6 @@ public class SkipistenService {
      */
     @DELETE
     @Path("delete")
-    @Produces(MediaType.TEXT_PLAIN)
     public Response deleteSkipisten(
             @NotEmpty
             @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")

@@ -1,6 +1,7 @@
 package ch.bzz.skigebiete.service;
 
 import ch.bzz.skigebiete.data.DataHandler;
+import ch.bzz.skigebiete.model.Skigebiet;
 import ch.bzz.skigebiete.model.Vermietung;
 
 import javax.validation.Valid;
@@ -21,7 +22,17 @@ public class VermietungService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listVermietung() {
+    public Response listVermietung(
+            @CookieParam("userRole") String userRole) {
+        {
+            List<Vermietung> genre = null;
+            int httpStatus;
+            if (userRole == null || userRole.equals("guest")) {
+                httpStatus = 403;
+            } else {
+                httpStatus = 200;
+            }
+        }
         List<Vermietung> vermietungList = DataHandler.readAllVermietung();
         return Response
                 .status(200)

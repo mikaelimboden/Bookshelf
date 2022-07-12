@@ -24,7 +24,17 @@ public class SkigebietService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listSkigebiet() {
+    public Response listSkigebiet(
+            @CookieParam("userRole") String userRole) {
+         {
+    List<Skigebiet> genre = null;
+    int httpStatus;
+    if (userRole == null || userRole.equals("guest")) {
+        httpStatus = 403;
+    } else {
+        httpStatus = 200;
+    }
+        }
         List<Skigebiet> skigebietList = DataHandler.readAllSkigebiet();
         return Response
                 .status(200)
