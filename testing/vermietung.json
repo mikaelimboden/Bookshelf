@@ -1,5 +1,6 @@
 [
   {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
     "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
     "vermietungName": "Ski-Snowboardleihe Davos",
     "vermietungOrt": "Davos",
@@ -9,6 +10,7 @@
     "artikelNummer": 12
   },
   {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
     "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c90ca3421e6",
     "vermietungName": "Miete für Ski- und Snowboards",
     "vermietungOrt": "Arosa",
@@ -18,6 +20,7 @@
     "artikelNummer": 25
   },
   {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
     "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c91ca3421e6",
     "vermietungName": "Wintersport Leihe St.Moritz",
     "vermietungOrt": "St.Moritz",
@@ -27,6 +30,7 @@
     "artikelNummer": 578
   },
   {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
     "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c92ca3421e6",
     "vermietungName": "Ski-Snowbard Miete Oberdorf",
     "vermietungOrt": "Oberdorf",

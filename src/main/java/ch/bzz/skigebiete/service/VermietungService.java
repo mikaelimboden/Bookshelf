@@ -58,10 +58,15 @@ public class VermietungService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertVermietung(
-            @Valid @BeanParam Vermietung vermietung
+            @Valid @BeanParam Vermietung vermietung,
+
+            @NotEmpty
+            @Pattern(regexp= "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("skigebietUUID") String skigebietUUID
     ) {
 
         vermietung.setVermietungName(UUID.randomUUID().toString());
+        vermietung.setSkigebietUUID(skigebietUUID);
         DataHandler.insertVermietung(vermietung);
         return Response
                 .status(200)
@@ -86,7 +91,11 @@ public class VermietungService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateVermietung(
-            @Valid @BeanParam Vermietung vermietung
+            @Valid @BeanParam Vermietung vermietung,
+
+            @NotEmpty
+            @Pattern(regexp= "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("skigebietUUID") String skigebietUUID
     ) {
         int httpStatus = 200;
         Vermietung oldvermietung = DataHandler.readVermietungbyUUID(vermietung.getVermietungUUID());
@@ -98,6 +107,7 @@ public class VermietungService {
             oldvermietung.setVermietungOffen(vermietung.isVermietungOffen());
             oldvermietung.setArtikelName(vermietung.getArtikelName());
             oldvermietung.setArtikelNummer(vermietung.getArtikelNummer());
+            oldvermietung.setSkigebietUUID(skigebietUUID);
             DataHandler.updateVermietung();
         } else {
             httpStatus = 410;

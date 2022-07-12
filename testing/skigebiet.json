@@ -4,23 +4,7 @@
     "skigebietName": "ArosaSkiGebiet",
     "skigebietOrt": "Arosa",
     "skigebietPLZ": 8402,
-    "skigebietOffen": true,
-    "skipisten": [
-      {
-        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
-        "skipistenName": "Berg",
-        "skipistenSchwierigkeitsgrad": "blau",
-        "skipistenOrt": "Hombrechtikon",
-        "skipistenLaenge": 100
-      },
-      {
-        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
-        "skipistenName": "Farmer",
-        "skipistenSchwierigkeitsgrad": "rot",
-        "skipistenOrt": "Arosa",
-        "skipistenLaenge": 80
-      }
-    ]
+    "skigebietOffen": true
   },
 
   {
@@ -28,22 +12,6 @@
     "skigebietName": "LenzerheideSkiGebiet",
     "skigebietOrt": "Lenzerheide",
     "skigebietPLZ": 8406,
-    "skigebietOffen": true,
-    "skipisten": [
-      {
-        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
-        "skipistenName": "Chopf",
-        "skipistenSchwierigkeitsgrad": "schwarz",
-        "skipistenOrt": "Winterthur",
-        "skipistenLaenge": 1002
-      },
-      {
-        "skipistenUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e3",
-        "skipistenName": "Jasi",
-        "skipistenSchwierigkeitsgrad": "gelb",
-        "skipistenOrt": "tann",
-        "skipistenLaenge": 1002
-      }
-    ]
+    "skigebietOffen": true
   }
 ]
