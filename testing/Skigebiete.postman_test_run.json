@@ -1,7 +1,7 @@
 {
-	"id": "b8320159-3b6a-4d8c-bc75-9d9365ca3ecf",
+	"id": "8f0a28b0-4bf9-492e-8fd9-75c64a411b58",
 	"name": "Skigebiete",
-	"timestamp": "2022-05-24T08:41:40.186Z",
+	"timestamp": "2022-07-12T16:06:52.777Z",
 	"collection_id": "4e7c9833-594d-43e0-ba21-712936ad42c6",
 	"folder_id": 0,
 	"environment_id": "0",
@@ -12,7 +12,7 @@
 			"id": "9a56b4b1-e1e4-437b-9ac8-526910380991",
 			"name": "read skipisten",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
-			"time": 80,
+			"time": 1450,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -20,7 +20,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				80
+				1450
 			],
 			"allTests": [
 				{}
@@ -30,7 +30,7 @@
 			"id": "02878d2b-f55f-4980-9f20-d23dcafd5760",
 			"name": "skipisten list all",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/list",
-			"time": 20,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -38,7 +38,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				20
+				11
 			],
 			"allTests": [
 				{}
@@ -48,7 +48,7 @@
 			"id": "ec255379-7356-4560-915b-8e3e833297fb",
 			"name": "read skipisten not found",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceae4-99ef-4b41-8383-4c99ca3421e6",
-			"time": 16,
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -56,7 +56,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				16
+				11
 			],
 			"allTests": [
 				{}
@@ -66,15 +66,15 @@
 			"id": "26fcc8af-1754-498d-a6e3-33d27f93500e",
 			"name": "read vermietung not found",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb6geee3-99ef-4b41-8383-4c90ca3421e6",
-			"time": 8,
+			"time": 56,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				8
+				56
 			],
 			"allTests": [
 				{}
@@ -84,7 +84,7 @@
 			"id": "0861cff0-6ed6-4fe5-b525-9ddb97172a9e",
 			"name": "vermietung list all",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/list",
-			"time": 9,
+			"time": 50,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -92,7 +92,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				9
+				50
 			],
 			"allTests": [
 				{}
@@ -102,6 +102,42 @@
 			"id": "915c4381-9cd2-4aba-bead-ff186b8641db",
 			"name": "read vermietung",
 			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "70a152f1-5ebf-4ca9-a671-bc2b80300781",
+			"name": "create Vermietung",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/create",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e26cced1-2556-4968-b8a7-4e53c5947f45",
+			"name": "skigebiet list all",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/list",
 			"time": 15,
 			"responseCode": {
 				"code": 200,
@@ -117,13 +153,31 @@
 			]
 		},
 		{
-			"id": "e26cced1-2556-4968-b8a7-4e53c5947f45",
-			"name": "skigebiet list all",
-			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/list",
-			"time": 20,
+			"id": "4ca0b411-f0cb-48fd-baaf-a812f14e483e",
+			"name": "read skigebiet",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 6,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a410b138-5a03-401a-a471-0a2a5a73e1a3",
+			"name": "read skigebiet not found",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421g6",
+			"time": 20,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {},
 			"testPassFailCounts": {},
@@ -135,10 +189,10 @@
 			]
 		},
 		{
-			"id": "4ca0b411-f0cb-48fd-baaf-a812f14e483e",
-			"name": "read skigebiet",
-			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
-			"time": 13,
+			"id": "16c0ea5b-3661-4da5-8ab5-b102967136af",
+			"name": "create Skigebiet",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/create",
+			"time": 734,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -146,17 +200,17 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				13
+				734
 			],
 			"allTests": [
 				{}
 			]
 		},
 		{
-			"id": "a410b138-5a03-401a-a471-0a2a5a73e1a3",
-			"name": "read skigebiet not found",
-			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421g6",
-			"time": 10,
+			"id": "afda02da-33b4-4d67-80b4-3704f04c2545",
+			"name": "update Skigebiet",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/update",
+			"time": 32,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -164,7 +218,61 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				10
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ac6d01e4-ea0b-4da6-8724-4d8f67e93f8d",
+			"name": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 58,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				58
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5accbb5f-75bc-4dbc-ac05-1ef2f69cada6",
+			"name": "delete Skigebiet",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				32
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "66eb6a72-85b4-44cb-b521-89a12868bf7d",
+			"name": "Login",
+			"url": "http://localhost:8080/Skigebiete-1.0/resource/user/login",
+			"time": 39,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				39
 			],
 			"allTests": [
 				{}
@@ -172,7 +280,7 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 191,
+	"totalTime": 2524,
 	"collection": {
 		"requests": [
 			{
@@ -200,6 +308,10 @@
 				"method": "GET"
 			},
 			{
+				"id": "70a152f1-5ebf-4ca9-a671-bc2b80300781",
+				"method": "GET"
+			},
+			{
 				"id": "e26cced1-2556-4968-b8a7-4e53c5947f45",
 				"method": "GET"
 			},
@@ -210,6 +322,26 @@
 			{
 				"id": "a410b138-5a03-401a-a471-0a2a5a73e1a3",
 				"method": "GET"
+			},
+			{
+				"id": "16c0ea5b-3661-4da5-8ab5-b102967136af",
+				"method": "POST"
+			},
+			{
+				"id": "afda02da-33b4-4d67-80b4-3704f04c2545",
+				"method": "PUT"
+			},
+			{
+				"id": "ac6d01e4-ea0b-4da6-8724-4d8f67e93f8d",
+				"method": "DELETE"
+			},
+			{
+				"id": "5accbb5f-75bc-4dbc-ac05-1ef2f69cada6",
+				"method": "DELETE"
+			},
+			{
+				"id": "66eb6a72-85b4-44cb-b521-89a12868bf7d",
+				"method": "POST"
 			}
 		]
 	}
