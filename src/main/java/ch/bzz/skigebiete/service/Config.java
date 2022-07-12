@@ -31,6 +31,7 @@ public class Config extends Application {
         providers.add(SkigebietService.class);
         providers.add(VermietungService.class);
         providers.add(TestService.class);
+        providers.add(UserService.class);
         return providers;
     }
 
