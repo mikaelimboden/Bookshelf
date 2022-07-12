@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "4e7c9833-594d-43e0-ba21-712936ad42c6",
+		"name": "Skigebiete",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Skipisten",
+			"item": [
+				{
+					"name": "read skipisten",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skipisten",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skipisten list all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skipisten",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read skipisten not found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skipisten/read?uuid=fb1ceae4-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skipisten",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceae4-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vermietung",
+			"item": [
+				{
+					"name": "read vermietung not found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb6geee3-99ef-4b41-8383-4c90ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"vermietung",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb6geee3-99ef-4b41-8383-4c90ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vermietung list all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"vermietung",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read vermietung",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"vermietung",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Vermietung",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "vermietungName",
+									"value": "vermietung",
+									"type": "text"
+								},
+								{
+									"key": "vermietungOrt",
+									"value": "hombi",
+									"type": "text"
+								},
+								{
+									"key": "vermietungPLZ",
+									"value": "asdf",
+									"type": "text"
+								},
+								{
+									"key": "vermietungOffen",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "artikelName",
+									"value": "artikel",
+									"type": "text"
+								},
+								{
+									"key": "artikelNummer",
+									"value": "43",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"vermietung",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Skigebiet",
+			"item": [
+				{
+					"name": "skigebiet list all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read skigebiet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read skigebiet not found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/read?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421g6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"read"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421g6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Skigebiet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "skigebietName",
+									"value": "SkipisteBrigels",
+									"type": "text"
+								},
+								{
+									"key": "skigebietOrt",
+									"value": "Brigels",
+									"type": "text"
+								},
+								{
+									"key": "skigebietPLZ",
+									"value": "5452",
+									"type": "text"
+								},
+								{
+									"key": "skigebietOffen",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Skigebiet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "skigebietUUID",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e7",
+									"type": "text"
+								},
+								{
+									"key": "skigebietName",
+									"value": "SkipisteBrigels",
+									"type": "text"
+								},
+								{
+									"key": "skigebietOrt",
+									"value": "Brigels",
+									"type": "text"
+								},
+								{
+									"key": "skigebietPLZ",
+									"value": "5452",
+									"type": "text"
+								},
+								{
+									"key": "skigebietOffen",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/skigebiet/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"skigebiet",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Skigebiet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/vermietung/delete?uuid=fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"vermietung",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "abcd",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "passwort",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Skigebiete-1.0/resource/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Skigebiete-1.0",
+								"resource",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
