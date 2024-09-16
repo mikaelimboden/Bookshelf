@@ -1,0 +1,17 @@
+[
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "skigebietName": "ArosaSkiGebiet",
+    "skigebietOrt": "Arosa",
+    "skigebietPLZ": 8402,
+    "skigebietOffen": true
+  },
+
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e7",
+    "skigebietName": "LenzerheideSkiGebiet",
+    "skigebietOrt": "Lenzerheide",
+    "skigebietPLZ": 8406,
+    "skigebietOffen": true
+  }
+]

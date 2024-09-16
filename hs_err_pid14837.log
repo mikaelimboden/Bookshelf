@@ -1,0 +1,381 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 65011712 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2877), pid=14837, tid=14838
+#
+# JRE version:  (11.0.8+10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.8+10-b944.34, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/bzz/IdeaProjects/Skigebiete/core.14837)
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+
+Host: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz, 2 cores, 3G, Linux Mint 19.1 Tessa
+Time: Tue Jul 12 17:57:35 2022 CEST elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fddcc028800):  JavaThread "Unknown thread" [_thread_in_vm, id=14838, stack(0x00007fddd4970000,0x00007fddd4a71000)]
+
+Stack: [0x00007fddd4970000,0x00007fddd4a71000],  sp=0x00007fddd4a6f200,  free space=1020k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xd680df]  VMError::report_and_die(int, char const*, char const*, __va_list_tag*, Thread*, unsigned char*, void*, void*, char const*, int, unsigned long)+0x37f
+V  [libjvm.so+0xd68dbb]  VMError::report_and_die(Thread*, char const*, int, unsigned long, VMErrorType, char const*, __va_list_tag*)+0x2b
+V  [libjvm.so+0x653115]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*, ...)+0xc5
+V  [libjvm.so+0xb71028]  os::pd_commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0xd8
+V  [libjvm.so+0xb683cd]  os::commit_memory_or_exit(char*, unsigned long, unsigned long, bool, char const*)+0x1d
+V  [libjvm.so+0x76c07c]  G1PageBasedVirtualSpace::commit_preferred_pages(unsigned long, unsigned long)+0x6c
+V  [libjvm.so+0x76c45e]  G1PageBasedVirtualSpace::commit(unsigned long, unsigned long)+0x19e
+V  [libjvm.so+0x775756]  G1RegionsLargerThanCommitSizeMapper::commit_regions(unsigned int, unsigned long, WorkGang*)+0x46
+V  [libjvm.so+0x7edcd4]  HeapRegionManager::commit_regions(unsigned int, unsigned long, WorkGang*)+0x54
+V  [libjvm.so+0x7ee8e0]  HeapRegionManager::make_regions_available(unsigned int, unsigned int, WorkGang*)+0x30
+V  [libjvm.so+0x7eed07]  HeapRegionManager::expand_at(unsigned int, unsigned int, WorkGang*) [clone .part.24]+0xf7
+V  [libjvm.so+0x72a290]  G1CollectedHeap::expand(unsigned long, WorkGang*, double*)+0xe0
+V  [libjvm.so+0x72a991]  G1CollectedHeap::initialize()+0x681
+V  [libjvm.so+0xd2ae61]  Universe::initialize_heap()+0x41
+V  [libjvm.so+0xd2b136]  universe_init()+0x46
+V  [libjvm.so+0x80db97]  init_globals()+0x57
+V  [libjvm.so+0xd04eda]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x30a
+V  [libjvm.so+0x8b22f1]  JNI_CreateJavaVM+0x51
+C  [libjli.so+0x3c98]  JavaMain+0x88
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000565036eb5e50, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00007fddcc040000 GCTaskThread "GC Thread#0" [stack: 0x00007fddd0f8a000,0x00007fddd108a000] [id=14839]
+  0x00007fddcc05b000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007fddd06c5000,0x00007fddd07c5000] [id=14840]
+  0x00007fddcc05d000 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007fddd05c3000,0x00007fddd06c3000] [id=14841]
+
+[error occurred during error reporting (printing all threads), id 0xb, SIGSEGV (0xb) at pc=0x00007fddd2feba10]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fddcc024e50] Heap_lock - owner thread: 0x00007fddcc028800
+
+Heap address: 0x00000000c2a00000, size: 982 MB, Compressed Oops mode: Non-zero based: 0x00000000c2a00000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (2 events):
+Event: 0.128 Protecting memory [0x00007fddd4970000,0x00007fddd4974000] with protection modes 0
+Event: 0.129 Loaded shared library /home/bzz/IntelliJ IDEA/jbr/lib/libzip.so
+
+
+Dynamic libraries:
+c6800000-100000000 ---p 00000000 00:00 0 
+565035d39000-565035d3a000 r-xp 00000000 08:01 403377                     /home/bzz/IntelliJ IDEA/jbr/bin/java
+565035f3a000-565035f3b000 r--p 00001000 08:01 403377                     /home/bzz/IntelliJ IDEA/jbr/bin/java
+565035f3b000-565035f3c000 rw-p 00002000 08:01 403377                     /home/bzz/IntelliJ IDEA/jbr/bin/java
+565036eb2000-565036ed3000 rw-p 00000000 00:00 0                          [heap]
+7fdda4000000-7fdda4021000 rw-p 00000000 00:00 0 
+7fdda4021000-7fdda8000000 ---p 00000000 00:00 0 
+7fddac000000-7fddac021000 rw-p 00000000 00:00 0 
+7fddac021000-7fddb0000000 ---p 00000000 00:00 0 
+7fddb10a8000-7fddb30a8000 rw-p 00000000 00:00 0 
+7fddb30a8000-7fddb4000000 ---p 00000000 00:00 0 
+7fddb4000000-7fddb4021000 rw-p 00000000 00:00 0 
+7fddb4021000-7fddb8000000 ---p 00000000 00:00 0 
+7fddb8896000-7fddb97ee000 ---p 00000000 00:00 0 
+7fddb97ee000-7fddb9a5e000 rwxp 00000000 00:00 0 
+7fddb9a5e000-7fddb9d7d000 ---p 00000000 00:00 0 
+7fddb9d7d000-7fddb9fed000 rwxp 00000000 00:00 0 
+7fddb9fed000-7fddc12b5000 ---p 00000000 00:00 0 
+7fddc12b5000-7fddc1525000 rwxp 00000000 00:00 0 
+7fddc1525000-7fddc87ee000 ---p 00000000 00:00 0 
+7fddc87ee000-7fddcc000000 r--s 00000000 08:01 166272                     /home/bzz/IntelliJ IDEA/jbr/lib/modules
+7fddcc000000-7fddcc072000 rw-p 00000000 00:00 0 
+7fddcc072000-7fddd0000000 ---p 00000000 00:00 0 
+7fddd0032000-7fddd05c1000 rw-p 00000000 00:00 0 
+7fddd05c1000-7fddd05c2000 ---p 00000000 00:00 0 
+7fddd05c2000-7fddd06c3000 rw-p 00000000 00:00 0 
+7fddd06c3000-7fddd06c4000 ---p 00000000 00:00 0 
+7fddd06c4000-7fddd07c5000 rw-p 00000000 00:00 0 
+7fddd07c5000-7fddd0d86000 ---p 00000000 00:00 0 
+7fddd0d86000-7fddd0f88000 rw-p 00000000 00:00 0 
+7fddd0f88000-7fddd0f89000 ---p 00000000 00:00 0 
+7fddd0f89000-7fddd108f000 rw-p 00000000 00:00 0 
+7fddd108f000-7fddd1175000 ---p 00000000 00:00 0 
+7fddd1175000-7fddd117a000 rw-p 00000000 00:00 0 
+7fddd117a000-7fddd1260000 ---p 00000000 00:00 0 
+7fddd1260000-7fddd1267000 r-xp 00000000 08:01 166044                     /home/bzz/IntelliJ IDEA/jbr/lib/libzip.so
+7fddd1267000-7fddd1466000 ---p 00007000 08:01 166044                     /home/bzz/IntelliJ IDEA/jbr/lib/libzip.so
+7fddd1466000-7fddd1467000 r--p 00006000 08:01 166044                     /home/bzz/IntelliJ IDEA/jbr/lib/libzip.so
+7fddd1467000-7fddd1468000 rw-p 00000000 00:00 0 
+7fddd1468000-7fddd1473000 r-xp 00000000 08:01 792067                     /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fddd1473000-7fddd1672000 ---p 0000b000 08:01 792067                     /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fddd1672000-7fddd1673000 r--p 0000a000 08:01 792067                     /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fddd1673000-7fddd1674000 rw-p 0000b000 08:01 792067                     /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fddd1674000-7fddd167a000 rw-p 00000000 00:00 0 
+7fddd167a000-7fddd1691000 r-xp 00000000 08:01 792063                     /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fddd1691000-7fddd1890000 ---p 00017000 08:01 792063                     /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fddd1890000-7fddd1891000 r--p 00016000 08:01 792063                     /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fddd1891000-7fddd1892000 rw-p 00017000 08:01 792063                     /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fddd1892000-7fddd1894000 rw-p 00000000 00:00 0 
+7fddd1894000-7fddd189f000 r-xp 00000000 08:01 792069                     /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fddd189f000-7fddd1a9e000 ---p 0000b000 08:01 792069                     /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fddd1a9e000-7fddd1a9f000 r--p 0000a000 08:01 792069                     /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fddd1a9f000-7fddd1aa0000 rw-p 0000b000 08:01 792069                     /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fddd1aa0000-7fddd1aa8000 r-xp 00000000 08:01 792064                     /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fddd1aa8000-7fddd1ca8000 ---p 00008000 08:01 792064                     /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fddd1ca8000-7fddd1ca9000 r--p 00008000 08:01 792064                     /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fddd1ca9000-7fddd1caa000 rw-p 00009000 08:01 792064                     /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fddd1caa000-7fddd1cc5000 r-xp 00000000 08:01 166026                     /home/bzz/IntelliJ IDEA/jbr/lib/libjimage.so
+7fddd1cc5000-7fddd1ec5000 ---p 0001b000 08:01 166026                     /home/bzz/IntelliJ IDEA/jbr/lib/libjimage.so
+7fddd1ec5000-7fddd1ec7000 r--p 0001b000 08:01 166026                     /home/bzz/IntelliJ IDEA/jbr/lib/libjimage.so
+7fddd1ec7000-7fddd1ec8000 rw-p 0001d000 08:01 166026                     /home/bzz/IntelliJ IDEA/jbr/lib/libjimage.so
+7fddd1ec8000-7fddd1ef1000 r-xp 00000000 08:01 166021                     /home/bzz/IntelliJ IDEA/jbr/lib/libjava.so
+7fddd1ef1000-7fddd20f0000 ---p 00029000 08:01 166021                     /home/bzz/IntelliJ IDEA/jbr/lib/libjava.so
+7fddd20f0000-7fddd20f1000 r--p 00028000 08:01 166021                     /home/bzz/IntelliJ IDEA/jbr/lib/libjava.so
+7fddd20f1000-7fddd20f2000 rw-p 00029000 08:01 166021                     /home/bzz/IntelliJ IDEA/jbr/lib/libjava.so
+7fddd20f2000-7fddd20f3000 rw-p 00000000 00:00 0 
+7fddd20f3000-7fddd2100000 r-xp 00000000 08:01 166043                     /home/bzz/IntelliJ IDEA/jbr/lib/libverify.so
+7fddd2100000-7fddd22ff000 ---p 0000d000 08:01 166043                     /home/bzz/IntelliJ IDEA/jbr/lib/libverify.so
+7fddd22ff000-7fddd2301000 r--p 0000c000 08:01 166043                     /home/bzz/IntelliJ IDEA/jbr/lib/libverify.so
+7fddd2301000-7fddd2302000 rw-p 00000000 00:00 0 
+7fddd2302000-7fddd2309000 r-xp 00000000 08:01 792076                     /lib/x86_64-linux-gnu/librt-2.27.so
+7fddd2309000-7fddd2508000 ---p 00007000 08:01 792076                     /lib/x86_64-linux-gnu/librt-2.27.so
+7fddd2508000-7fddd2509000 r--p 00006000 08:01 792076                     /lib/x86_64-linux-gnu/librt-2.27.so
+7fddd2509000-7fddd250a000 rw-p 00007000 08:01 792076                     /lib/x86_64-linux-gnu/librt-2.27.so
+7fddd250a000-7fddd26a7000 r-xp 00000000 08:01 792056                     /lib/x86_64-linux-gnu/libm-2.27.so
+7fddd26a7000-7fddd28a6000 ---p 0019d000 08:01 792056                     /lib/x86_64-linux-gnu/libm-2.27.so
+7fddd28a6000-7fddd28a7000 r--p 0019c000 08:01 792056                     /lib/x86_64-linux-gnu/libm-2.27.so
+7fddd28a7000-7fddd28a8000 rw-p 0019d000 08:01 792056                     /lib/x86_64-linux-gnu/libm-2.27.so
+7fddd28a8000-7fddd38d4000 r-xp 00000000 08:01 400724                     /home/bzz/IntelliJ IDEA/jbr/lib/server/libjvm.so
+7fddd38d4000-7fddd3ad3000 ---p 0102c000 08:01 400724                     /home/bzz/IntelliJ IDEA/jbr/lib/server/libjvm.so
+7fddd3ad3000-7fddd3b92000 r--p 0102b000 08:01 400724                     /home/bzz/IntelliJ IDEA/jbr/lib/server/libjvm.so
+7fddd3b92000-7fddd3bcb000 rw-p 010ea000 08:01 400724                     /home/bzz/IntelliJ IDEA/jbr/lib/server/libjvm.so
+7fddd3bcb000-7fddd3c22000 rw-p 00000000 00:00 0 
+7fddd3c22000-7fddd3e09000 r-xp 00000000 08:01 792049                     /lib/x86_64-linux-gnu/libc-2.27.so
+7fddd3e09000-7fddd4009000 ---p 001e7000 08:01 792049                     /lib/x86_64-linux-gnu/libc-2.27.so
+7fddd4009000-7fddd400d000 r--p 001e7000 08:01 792049                     /lib/x86_64-linux-gnu/libc-2.27.so
+7fddd400d000-7fddd400f000 rw-p 001eb000 08:01 792049                     /lib/x86_64-linux-gnu/libc-2.27.so
+7fddd400f000-7fddd4013000 rw-p 00000000 00:00 0 
+7fddd4013000-7fddd4016000 r-xp 00000000 08:01 792055                     /lib/x86_64-linux-gnu/libdl-2.27.so
+7fddd4016000-7fddd4215000 ---p 00003000 08:01 792055                     /lib/x86_64-linux-gnu/libdl-2.27.so
+7fddd4215000-7fddd4216000 r--p 00002000 08:01 792055                     /lib/x86_64-linux-gnu/libdl-2.27.so
+7fddd4216000-7fddd4217000 rw-p 00003000 08:01 792055                     /lib/x86_64-linux-gnu/libdl-2.27.so
+7fddd4217000-7fddd4226000 r-xp 00000000 08:01 166003                     /home/bzz/IntelliJ IDEA/jbr/lib/jli/libjli.so
+7fddd4226000-7fddd4425000 ---p 0000f000 08:01 166003                     /home/bzz/IntelliJ IDEA/jbr/lib/jli/libjli.so
+7fddd4425000-7fddd4426000 r--p 0000e000 08:01 166003                     /home/bzz/IntelliJ IDEA/jbr/lib/jli/libjli.so
+7fddd4426000-7fddd4427000 rw-p 0000f000 08:01 166003                     /home/bzz/IntelliJ IDEA/jbr/lib/jli/libjli.so
+7fddd4427000-7fddd4441000 r-xp 00000000 08:01 792072                     /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fddd4441000-7fddd4640000 ---p 0001a000 08:01 792072                     /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fddd4640000-7fddd4641000 r--p 00019000 08:01 792072                     /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fddd4641000-7fddd4642000 rw-p 0001a000 08:01 792072                     /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fddd4642000-7fddd4646000 rw-p 00000000 00:00 0 
+7fddd4646000-7fddd4662000 r-xp 00000000 08:01 792556                     /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fddd4662000-7fddd4861000 ---p 0001c000 08:01 792556                     /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fddd4861000-7fddd4862000 r--p 0001b000 08:01 792556                     /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fddd4862000-7fddd4863000 rw-p 0001c000 08:01 792556                     /lib/x86_64-linux-gnu/libz.so.1.2.11
+7fddd4863000-7fddd488c000 r-xp 00000000 08:01 787144                     /lib/x86_64-linux-gnu/ld-2.27.so
+7fddd494f000-7fddd4970000 rw-p 00000000 00:00 0 
+7fddd4970000-7fddd4974000 ---p 00000000 00:00 0 
+7fddd4974000-7fddd4a75000 rw-p 00000000 00:00 0 
+7fddd4a76000-7fddd4a7b000 rw-p 00000000 00:00 0 
+7fddd4a7b000-7fddd4a82000 ---p 00000000 00:00 0 
+7fddd4a82000-7fddd4a8a000 rw-s 00000000 08:01 297928                     /tmp/hsperfdata_bzz/14837
+7fddd4a8a000-7fddd4a8b000 ---p 00000000 00:00 0 
+7fddd4a8b000-7fddd4a8c000 r--p 00000000 00:00 0 
+7fddd4a8c000-7fddd4a8d000 r--p 00029000 08:01 787144                     /lib/x86_64-linux-gnu/ld-2.27.so
+7fddd4a8d000-7fddd4a8e000 rw-p 0002a000 08:01 787144                     /lib/x86_64-linux-gnu/ld-2.27.so
+7fddd4a8e000-7fddd4a8f000 rw-p 00000000 00:00 0 
+7fffc5baf000-7fffc5bd0000 rw-p 00000000 00:00 0                          [stack]
+7fffc5be0000-7fffc5be3000 r--p 00000000 00:00 0                          [vvar]
+7fffc5be3000-7fffc5be5000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+java_command: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+java_class_path (initial): /home/bzz/IntelliJ IDEA/plugins/git4idea/lib/git4idea-rt.jar:/home/bzz/IntelliJ IDEA/lib/xmlrpc-2.0.1.jar:/home/bzz/IntelliJ IDEA/lib/commons-codec-1.14.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 2                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 65011712                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1029701632                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5825164                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122916538                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122916538                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/usr/lib/git-core:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SHELL=/bin/bash
+DISPLAY=:0
+LANG=de_CH.UTF-8
+LC_ALL=en_US.UTF-8
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xd68e10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xd68e10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xd68e10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xb6cbd0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xb6cbd0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xd68e10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xb6ca60], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=LinuxMint
+DISTRIB_RELEASE=19.1
+DISTRIB_CODENAME=tessa
+DISTRIB_DESCRIPTION="Linux Mint 19.1 Tessa"
+uname:Linux 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64
+OS uptime: 0 days 13:38 hours
+libc:glibc 2.27 NPTL 2.27 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 15440/15440 , NOFILE 1048576/1048576 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 65536k/65536k
+load average:13.04 5.42 2.80
+
+/proc/meminfo:
+MemTotal:        4015696 kB
+MemFree:          106032 kB
+MemAvailable:      26392 kB
+Buffers:            1816 kB
+Cached:            64912 kB
+SwapCached:          280 kB
+Active:          2478596 kB
+Inactive:         634776 kB
+Active(anon):    2460392 kB
+Inactive(anon):   614300 kB
+Active(file):      18204 kB
+Inactive(file):    20476 kB
+Unevictable:          48 kB
+Mlocked:              48 kB
+SwapTotal:        969960 kB
+SwapFree:              0 kB
+Dirty:               172 kB
+Writeback:           132 kB
+AnonPages:       3046600 kB
+Mapped:            31416 kB
+Shmem:             27868 kB
+Slab:             113500 kB
+SReclaimable:      42760 kB
+SUnreclaim:        70740 kB
+KernelStack:       17056 kB
+PageTables:        57392 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2977808 kB
+Committed_AS:    8644284 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      212800 kB
+DirectMap2M:     3981312 kB
+DirectMap1G:     2097152 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled:
+always [madvise] never
+
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter):
+always defer defer+madvise [madvise] never
+
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+30880
+
+
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+
+
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+131072
+
+
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-1
+cpu_memory_nodes: 0
+active_processor_count: 2
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 3188269056
+memory_max_usage_in_bytes: 857919488
+
+VMWare virtualization detected
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU:total 2 (initial active 2) (1 cores per cpu, 1 threads per core) family 6 model 142 stepping 12, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault invpcid_single fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid rdseed adx smap clflushopt xsaveopt xsavec xsaves ibpb ibrs stibp arat arch_capabilities
+
+Memory: 4k page, physical 4015696k(106032k free), swap 969960k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.8+10-b944.34) for linux-amd64 JRE (11.0.8+10-b944.34), built on Sep 11 2020 12:47:33 by "" with gcc 8.3.1 20190311 (Red Hat 8.3.1-3)
+
+END.

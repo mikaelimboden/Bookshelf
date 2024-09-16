@@ -1,0 +1,42 @@
+[
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "vermietungName": "Ski-Snowboardleihe Davos",
+    "vermietungOrt": "Davos",
+    "vermietungPLZ": 8369,
+    "vermietungOffen": false,
+    "artikelName": "Skihelm",
+    "artikelNummer": 12
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c90ca3421e6",
+    "vermietungName": "Miete für Ski- und Snowboards",
+    "vermietungOrt": "Arosa",
+    "vermietungPLZ": 8390,
+    "vermietungOffen": true,
+    "artikelName": "Skistöcke",
+    "artikelNummer": 25
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e6",
+    "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c91ca3421e6",
+    "vermietungName": "Wintersport Leihe St.Moritz",
+    "vermietungOrt": "St.Moritz",
+    "vermietungPLZ": "6435",
+    "vermietungOffen": false,
+    "artikelName": "Snowboard",
+    "artikelNummer": 578
+  },
+  {
+    "skigebietUUID": "fb1ceee3-99ef-4b41-8383-4c99ca3421e9",
+    "vermietungUUID": "fb1ceee3-99ef-4b41-8383-4c92ca3421e6",
+    "vermietungName": "Ski-Snowbard Miete Oberdorf",
+    "vermietungOrt": "Oberdorf",
+    "vermietungPLZ": 800,
+    "vermietungOffen": true,
+    "artikelName": "Skihelm",
+    "artikelNummer": 12
+  }
+]
